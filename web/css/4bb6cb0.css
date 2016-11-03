@@ -7348,6 +7348,10 @@ fieldset[disabled] .btn-danger.active {
   margin: 10px 0;
 }
 
+.btn-primary {
+  background-image: none;
+}
+
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic);/*!
  *   AdminLTE v2.3.5
  *   Author: Almsaeed Studio
