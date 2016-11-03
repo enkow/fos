@@ -1,0 +1,20 @@
+{% extends 'AppBundle::admin/page.html.twig' %}
+
+{% block title %}
+  <i class="fa fa-plus"></i> Dodaj
+{% endblock %}
+
+{% block styles %}
+
+{% endblock %}
+
+{% block body %}
+    <div class="col-md-4">
+      {{ form_start(form) }}
+        {{ form_row(form.name) }}
+        {{ form_rest(form) }}
+        <div class="clearfix"></div>
+        <button type="submit" class="btn btn-success form">Dodaj</button>
+      {{ form_end(form) }}
+    </div>
+{% endblock %}

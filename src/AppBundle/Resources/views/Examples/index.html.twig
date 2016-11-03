@@ -1,0 +1,29 @@
+{% extends 'AppBundle::admin/page.html.twig' %}
+
+{% block title %}Title{% endblock %}
+{% block subtitle %}<a href="{{ url('examples-add') }}" class="btn btn-success">Add</a>{% endblock %}
+
+{% block body %}
+    <table class="data table">
+    <thead>
+        <tr>
+            <th class="id">#</th>
+            <th>Nazwa</th>
+            <th data-orderable="false"></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for example in examples %}
+            <tr>
+                <td>{{ example.id }}</td>
+                <td>{{ example.name }}</td>
+                <td>
+                    <a href="{{ url('examples-view', {'id': example.id}) }}" class="btn btn-success">Lookup</a>
+                    <a href="{{ url('examples-edit', {'id': example.id}) }}" class="btn btn-info">Edit</a>
+                    <a href="" class="btn btn-danger deletable" data-href="{{ url('examples-delete', {'id': example.id}) }}">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

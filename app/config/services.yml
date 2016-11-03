@@ -1,0 +1,29 @@
+services:
+  app.example_repository:
+      class: Doctrine\ORM\EntityRepository
+      factory: ["@doctrine.orm.entity_manager", getRepository]
+      arguments:
+        - AppBundle\Entity\Example
+
+  app.example_form:
+    class: AppBundle\Form\ExampleType
+    tags:
+      - { name: form.type, alias: example }
+
+  app.examples_controller:
+    class: AppBundle\Controller\ExamplesController
+    arguments:
+      - '@translator'
+      - '@templating'
+      - '@session'
+      - '@router'
+      - '@app.example_repository'
+      - '@form.factory'
+
+  app.admin_controller:
+    class: AppBundle\Controller\AdminController
+    arguments:
+      - '@translator'
+      - '@templating'
+      - '@session'
+      - '@router'
