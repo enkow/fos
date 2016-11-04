@@ -1,0 +1,58 @@
+{% extends 'AppBundle::admin/page.html.twig' %}
+
+{% block title %}Title{% endblock %}
+{% block subtitle %}<a href="{{ url('examples-add') }}" class="btn btn-success">Add</a>{% endblock %}
+
+{% block body %}
+
+        {% for ex in grafs %}
+            {% set offset = 0 %}
+            {% set col = 1 %}
+            {% if ex.g1 == null %}
+              {% set offset = 1 %}
+            {% elseif ex.g1 == ex.g2 %}
+              {% set col = col + 1 %}
+              <div class="col-sm-{{ col * 3 }}" style="background:black;border: 1px solid white;height: 20px;"></div>
+            {% else %}
+              <div class="col-sm-{{ col * 3 }}" style="background:black;border: 1px solid white;height: 20px;"></div>
+            {% endif %}
+
+            {% if col == 1 %}
+              {% if ex.g2 and ex.g2 == ex.g3 %}
+                {% set col = col + 1 %}
+                <div class="col-sm-offset-{{ offset * 3 }} col-sm-{{ col * 3 }}" style="background:black;border: 1px solid white;height: 20px;"></div>
+                {% set offset = 0 %}
+              {% elseif ex.g2 != null %}
+                <div class="col-sm-offset-{{ offset * 3 }} col-sm-{{ col * 3 }}" style="background:black;border: 1px solid white;height: 20px;"></div>
+                {% set offset = 0 %}
+              {% else %}
+                {% set offset = offset + 1 %}
+              {% endif %}
+            {% else %}
+              {% set col = 1 %}
+            {% endif %}
+
+            {% if col == 1 %}
+              {% if ex.g3 and ex.g3 == ex.g4 %}
+                {% set col = col + 1 %}
+                <div class="col-sm-offset-{{ offset * 3 }} col-sm-{{ col * 3 }}" style="background:black;border: 1px solid white;height: 20px;"></div>
+                {% set offset = 0 %}
+              {% elseif ex.g3 != null %}
+                <div class="col-sm-offset-{{ offset * 3 }} col-sm-{{ col * 3 }}" style="background:black;border: 1px solid white;height: 20px;"></div>
+                {% set offset = 0 %}
+              {% else %}
+                {% set offset = offset + 1 %}
+              {% endif %}
+            {% else %}
+              {% set col = 1 %}
+            {% endif %}
+
+            {% if col == 1 %}
+              {% if ex.g4 != null %}
+                <div class="col-sm-offset-{{ offset * 3 }} col-sm-{{ col * 3 }}" style="background:black;border: 1px solid white;height: 20px;"></div>
+              {% endif %}
+            {% endif %}
+            <div class="clearfix"></div>
+        {% endfor %}
+
+{% endblock %}

@@ -5,6 +5,12 @@ services:
       arguments:
         - AppBundle\Entity\Example
 
+  app.graf_repository:
+      class: Doctrine\ORM\EntityRepository
+      factory: ["@doctrine.orm.entity_manager", getRepository]
+      arguments:
+        - AppBundle\Entity\Graf
+
   app.example_form:
     class: AppBundle\Form\ExampleType
     tags:
@@ -27,3 +33,13 @@ services:
       - '@templating'
       - '@session'
       - '@router'
+
+  app.grafs_controller:
+    class: AppBundle\Controller\GrafsController
+    arguments:
+      - '@translator'
+      - '@templating'
+      - '@session'
+      - '@router'
+      - '@app.graf_repository'
+      - '@form.factory'
