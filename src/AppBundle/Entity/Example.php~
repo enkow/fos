@@ -57,6 +57,34 @@ class Example
     private $name;
 
     /**
+     * h.
+     *
+     * @ORM\Column(
+     *     name="h",
+     *     type="integer",
+     *     nullable=false
+     * )
+     * @Assert\NotBlank(groups={"example-default"})
+     *
+     * @var string $name
+     */
+    private $h;
+
+    /**
+     * t.
+     *
+     * @ORM\Column(
+     *     name="t",
+     *     type="integer",
+     *     nullable=false
+     * )
+     * @Assert\NotBlank(groups={"example-default"})
+     *
+     * @var string $name
+     */
+    private $t;
+
+    /**
      * Set Id.
      *
      * @param string $id Id
@@ -94,5 +122,45 @@ class Example
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set h.
+     *
+     * @param string $h H
+     */
+    public function setH($h)
+    {
+        $this->h = $h;
+    }
+
+    /**
+     * Get h.
+     *
+     * @return string H
+     */
+    public function getH()
+    {
+        return $this->h;
+    }
+
+    /**
+     * Set t.
+     *
+     * @param string $t T
+     */
+    public function setT($t)
+    {
+        $this->t = $t;
+    }
+
+    /**
+     * Get t.
+     *
+     * @return string T
+     */
+    public function getT()
+    {
+        return $this->t;
     }
 }

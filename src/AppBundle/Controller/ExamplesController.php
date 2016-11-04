@@ -77,6 +77,7 @@ class ExamplesController
     public function indexAction()
     {
         $examples = $this->model->findAll();
+        //dump($examples);exit;
         return $this->templating->renderResponse(
             'AppBundle:Examples:index.html.twig',
             array('examples' => $examples)

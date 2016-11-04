@@ -4,26 +4,10 @@
 {% block subtitle %}<a href="{{ url('examples-add') }}" class="btn btn-success">Add</a>{% endblock %}
 
 {% block body %}
-    <table class="data table">
-    <thead>
-        <tr>
-            <th class="id">#</th>
-            <th>Nazwa</th>
-            <th data-orderable="false"></th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for example in examples %}
-            <tr>
-                <td>{{ example.id }}</td>
-                <td>{{ example.name }}</td>
-                <td>
-                    <a href="{{ url('examples-view', {'id': example.id}) }}" class="btn btn-success">Lookup</a>
-                    <a href="{{ url('examples-edit', {'id': example.id}) }}" class="btn btn-info">Edit</a>
-                    <a href="" class="btn btn-danger deletable" data-href="{{ url('examples-delete', {'id': example.id}) }}">Delete</a>
-                </td>
-            </tr>
+
+        {% for ex in examples %}
+
+            <div class="col-md-offset-{{ ex.h * 3 - 3 }} col-md-{{ ex.t * 3 }}" style="background:black;border: 1px solid white;height: 20px;"></div>
         {% endfor %}
-    </tbody>
-</table>
+
 {% endblock %}
